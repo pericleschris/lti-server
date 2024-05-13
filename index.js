@@ -8,7 +8,7 @@ const lti = require("ltijs").Provider;
 lti.setup(
   process.env.LTI_KEY,
   {
-    url: process.env.DB_CONNECTION_STRING,
+    url: process.env.AZURE_COSMOS_CONNECTIONSTRING,
     // connection: { user: process.env.DB_USER, pass: process.env.DB_PASS },
   },
   {
