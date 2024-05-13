@@ -12,12 +12,11 @@ lti.setup(
     // connection: { user: process.env.DB_USER, pass: process.env.DB_PASS },
   },
   {
-    // cookies: {
-    //   secure: true, // Set secure to true if the testing platform is in a different domain and https is being used
-    //   sameSite: "Lax", // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
-    //   domain: ".azurewebsites.net",
-    // },
-    ltiaas: true,
+    cookies: {
+      secure: true, // Set secure to true if the testing platform is in a different domain and https is being used
+      sameSite: "None", // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
+    },
+    // ltiaas: true,
     devMode: false, // Set DevMode to true if the testing platform is in a different domain and https is not being used
   }
 );
