@@ -1,5 +1,4 @@
 require("dotenv").config();
-const path = require("path");
 const routes = require("./src/routes");
 
 const lti = require("ltijs").Provider;
@@ -9,25 +8,18 @@ lti.setup(
   process.env.LTI_KEY,
   {
     url: process.env.AZURE_COSMOS_CONNECTIONSTRING,
-    // connection: { user: process.env.DB_USER, pass: process.env.DB_PASS },
   },
   {
     cookies: {
       secure: true, // Set secure to true if the testing platform is in a different domain and https is being used
       sameSite: "None", // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
     },
-    // ltiaas: true,
     devMode: false, // Set DevMode to true if the testing platform is in a different domain and https is not being used
   }
 );
 
 // When receiving successful LTI launch redirects to app
 lti.onConnect(async (token, req, res) => {
-  // const url = "https://lti-psi.vercel.app/";
-
-  // res.writeHead(302, { Location: url });
-  // res.end();
-  // return res.sendFile(path.join(__dirname, "./public/index.html"));
   return lti.redirect(res, "https://game-virtudes.azurewebsites.net");
 });
 
@@ -44,12 +36,12 @@ const setup = async () => {
   await lti.deploy({ port: process.env.PORT });
 
   await lti.registerPlatform({
-    url: "https://canvas.test.instructure.com",
+    url: process.env.PLATFORM_URL,
     name: "Canvas",
-    clientId: "247230000000000103",
-    authenticationEndpoint: "https://sso.test.canvaslms.com/api/lti/authorize_redirect",
-    accesstokenEndpoint: "https://sso.test.canvaslms.com/login/oauth2/token",
-    authConfig: { method: "JWK_SET", key: "https://sso.test.canvaslms.com/api/lti/security/jwks" },
+    clientId: process.env.PLATFORM_CLIENTID,
+    authenticationEndpoint: process.env.PLATFORM_AUTH_ENDPOINT,
+    accesstokenEndpoint: process.env.PLATFORM_TOKEN_ENDPOINT,
+    authConfig: { method: "JWK_SET", key: process.env.PLATFORM_KEY_ENDPOINT },
   });
 };
 
