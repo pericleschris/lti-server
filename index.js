@@ -15,6 +15,7 @@ lti.setup(
       sameSite: "None", // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
     },
     devMode: false, // Set DevMode to true if the testing platform is in a different domain and https is not being used
+    ltiass: true,
   }
 );
 
