@@ -11,8 +11,8 @@ lti.setup(
   },
   {
     cookies: {
-      secure: false, // Set secure to true if the testing platform is in a different domain and https is being used
-      sameSite: "", // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
+      secure: true, // Set secure to true if the testing platform is in a different domain and https is being used
+      sameSite: "None", // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
     },
     devMode: false, // Set DevMode to true if the testing platform is in a different domain and https is not being used
     // ltiaas: true,
