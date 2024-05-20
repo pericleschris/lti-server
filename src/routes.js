@@ -108,9 +108,9 @@ router.get("/info", async (req, res) => {
   const context = res.locals.context;
 
   const info = {};
-  if (token.userInfo) {
-    if (token.userInfo.name) info.name = token.userInfo.name;
-    if (token.userInfo.email) info.email = token.userInfo.email;
+  if (token.custom) {
+    if (token.custom.username) info.name = token.custom.username;
+    if (token.custom.useremail) info.email = token.custom.useremail;
   }
 
   if (context.roles) info.roles = context.roles;
