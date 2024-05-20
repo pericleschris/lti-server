@@ -108,13 +108,17 @@ router.get("/info", async (req, res) => {
   const context = res.locals.context;
 
   const info = {};
-  if (token.custom) {
-    if (token.custom.username) info.name = token.custom.username;
-    if (token.custom.useremail) info.email = token.custom.useremail;
+  if (token.userInfo) {
+    if (token.userInfo.name) info.name = token.userInfo.name;
+    if (token.userInfo.email) info.email = token.userInfo.email;
   }
 
   if (context.roles) info.roles = context.roles;
   if (context.context) info.context = context.context;
+  if (context.custom) {
+    info.name = context.custom.username;
+    info.email = context.custom.useremail;
+  }
 
   return res.send(info);
 });
