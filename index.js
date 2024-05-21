@@ -13,7 +13,7 @@ lti.setup(
     cookies: {
       secure: true, // Set secure to true if the testing platform is in a different domain and https is being used
       sameSite: "None", // Set sameSite to 'None' if the testing platform is in a different domain and https is being used
-      domain: ".azurewebsites.net",
+      domain: "azurewebsites.net",
     },
     devMode: false, // Set DevMode to true if the testing platform is in a different domain and https is not being used
     // ltiaas: true,
